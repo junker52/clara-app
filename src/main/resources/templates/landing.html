@@ -1,0 +1,353 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'}"
+          type="text/css">
+    <link rel="stylesheet" th:href="@{css/colorful.css}">
+    <title>Clara Barnés - Translations</title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container"><a class="navbar-brand" href="#">
+        <b> CLARA BARNÉS</b>
+    </a>
+        <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+                data-target="#navbar11">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar11">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="#mission">Mission</a></li>
+                <li class="nav-item"><a class="nav-link" href="#career">Career</a></li>
+                <li class="nav-item"><a class="nav-link" href="#budget">Budget</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contactme">Contact</a></li>
+            </ul>
+            <ul class="navbar-nav ">
+                <li class="nav-item"><a class="nav-link" href="#">EN</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">FR</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">ES</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">CA</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="py-5 text-center text-white h-100 align-items-center d-flex"
+     style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('image/cover.JPG'); background-position: center center, center center; background-size: cover, cover; background-repeat: repeat, repeat;">
+    <div class="container py-5">
+        <div class="row">
+            <div class="mx-auto col-lg-8 col-md-10">
+                <h1 class="mb-4 display-4">Translating to understand&nbsp;</h1>
+                <p class="lead mb-5">I translate to bring people, knowledge and cultures closer. I like to communicate
+                    and help people to communicate and understand each other better.</p> <a href="#budget"
+                                                                                            class="btn btn-lg mx-1 btn-secondary"><i
+                    class="fa fa-fw mr-2 fa-globe"></i>I need to translate something</a><a
+                    th:href="@{'https://es.linkedin.com/in/clara-barn%C3%A9s-andreu-37119b109'}"
+                    class="btn btn-lg btn-info mx-1" target="_blank"><i class="fa fa-linkedin mr-2"></i>LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-5" style="" id="mission">
+    <div class="container">
+        <div class="row">
+            <div class="px-lg-5 d-flex flex-column justify-content-center col-lg-6">
+                <h2 contenteditable="true">Translating &amp; Interpreting</h2>
+                <p class="mb-3 text-justify">My name is Clara Barnés and my job is to help people who speak different
+                    languages communicate without problems. I have a degree in Translation and Interpreting from the
+                    UAB.<br>From some years ago I work with <strong>catalan</strong>, <strong>spanish</strong>, <strong>english</strong>
+                    and <strong>french</strong> for public and private clients doing translations of generic and
+                    specialized texts, as well as performing interpretation tasks</p>
+            </div>
+            <div class="col-lg-6"><img class="img-fluid d-block" th:src="@{image/clara-picture.jpg}"></div>
+        </div>
+    </div>
+</div>
+<div class="py-5 bg-dark">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="text-center mx-auto col-md-12">
+                <h2 class="mb-3">About me: I like to do sports and, above all, travel ...</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-4 col-lg-2 p-0"><img class="img-fluid d-block" th:src="@{image/geneve_350h.jpg}">
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 p-0"><img class="img-fluid d-block" th:src="@{image/jardins_350h.JPG}">
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 p-0"><img class="img-fluid d-block" th:src="@{image/krakow_350h.jpg}">
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 p-0"><img class="img-fluid d-block" th:src="@{image/laruns_350h.jpg}">
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 p-0"><img class="img-fluid d-block" th:src="@{image/road_350h.JPG}">
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 p-0"><img class="img-fluid d-block" th:src="@{image/lisbon_350h.jpg}">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-5" id="career">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Some of the partners that I have worked with ...</h1>
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 p-md-4 col-12"><a href="http://www.bimsa.cat/" target="_blank"><img
+                            class="img-fluid d-block" th:src="@{image/bimsa-logo-300h.jpg}" width="1500"></a></div>
+                    <div class="col-md-6 offset-lg-1 d-flex flex-column justify-content-center py-4">
+                        <h4 class="my-3"><b>BIMSA</b></h4>
+                        <p class="text-justify">I have collaborated with BIMSA, doing translations of technical
+                            documents of the legal field related to public works tenders from Catalan to Spanish for
+                            later publication.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 d-flex flex-column justify-content-center order-2 order-md-1 py-4">
+                        <h4 class="my-3"><b>Mossos d'Esquadra</b></h4>
+                        <p class="text-justify">I have collaborated with the police force of Mossos d'Esquadra, through
+                            an intermediary company, assisting foreigners in the presentation of complaints: acting as
+                            interpreter between the agents and these people, as well as translating their testimonies to
+                            translate them into official documents .</p>
+                    </div>
+                    <div class="col-lg-5 col-md-6 p-md-4 offset-lg-1 order-1 order-md-2 col-12"><a
+                            href="https://mossos.gencat.cat/" target="_blank"><img class="img-fluid d-block"
+                                                                                   th:src="@{image/mossos-logo-300h.jpg}"
+                                                                                   width="1500"></a></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 p-md-4 col-12"><a href="https://www.vopi4.com/" target="_blank"><img
+                            class="img-fluid d-block" th:src="@{image/vopi-logo-300h.jpg}" width="1500"></a></div>
+                    <div class="col-md-6 offset-lg-1 d-flex flex-column justify-content-center py-4">
+                        <h4 class="my-3"><b>Vopi 4 Business Group</b></h4>
+                        <p class="text-justify">I have collaborated extensively with Vopi4 translating the different
+                            websites of the companies that make up the group into English and French. Additionally, I
+                            have collaborated in the translation into these two languages of technical and legal
+                            documents.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-5 text-center bg-dark" id="budget">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>Do you need to translate a document ? Make numbers...</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center" id="contentToWaitId">
+            <div class="col-md-6 p-4">
+                <h4 class="mb-4">Find the price per word of your translation</h4>
+                <form class="">
+                    <div class="form-group"><label class="text-left">From</label>
+                        <select class="form-control" id="originLanguageSelectId" onchange="fillTargetLanguages()">
+                        </select></div>
+                    <div class="form-group"><label>To</label>
+                        <select class="form-control" id="targetLanguageSelectId" onchange="findCombination()">
+                        </select>
+                    </div>
+                </form>
+                <p class="mt-3 text-success" id="resultLangToLangId"><strong id="priceBoxId">10</strong> € / word</p>
+            </div>
+            <div class="col-md-6 col-6 p-4">
+                <h4>Select the document to be translated to obtain an approximate budget</h4>
+                <div class="form-group"><label id="requirementsFileId">Only .docx or .doc and 5 MB files allowed</label>
+                </div>
+                <button type="button" class="btn btn-outline-primary" onclick="uploadFileTrigger()">Upload File</button>
+                <button type="button" class="btn btn-outline-warning d-none">Reset File</button>
+                <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+                    <input type="file" class="d-none" id="uploadFileInputId" name="file">
+                </form>
+                <small class="form-text text-muted">The file won't be saved in our servers after this operation.</small>
+                <div class="row mt-2 d-none" id="resultFileRowId">
+                    <div class="col-md-12">
+                        <p class="text-success">Words found: <strong id="wordsCounterId">1450</strong> - Estimated cost:
+                            <strong id="priceId">123</strong> €</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-5 text-center" id="contactme">
+    <div class="container">
+        <div class="row">
+            <div class="mx-auto p-4 col-lg-7">
+                <h1 class="mb-4">Contact me!</h1>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-12"><input type="text" class="form-control" id="form27"
+                                                                 placeholder="Name"></div>
+                    </div>
+                    <div class="form-group"><input type="email" class="form-control" id="form29" placeholder="Email">
+                    </div>
+                    <div class="form-group"><textarea class="form-control" id="form30" rows="3"
+                                                      placeholder="Tell me!"></textarea></div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-3 bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p class="mb-0">© Copyright 2019 - CLARA BARNÉS. All rights reserved.&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script
+        th:src="@{'https://code.jquery.com/jquery-3.4.0.min.js'}"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+        crossorigin="anonymous"></script>
+<script th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js'}"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script th:src="@{'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'}"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script th:src="@{'https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js'}"></script>
+<script>
+    $(document).ready(function () {
+        fillOriginLanguages();
+        triggerOnChangeFileInput();
+    });
+
+    function fillOriginLanguages() {
+        $("#originLanguageSelectId").empty();
+        $.get("/languages")
+            .done(function (data) {
+                var response = data;
+                for (var i = 0; i < response.length; i++) {
+                    var lang = response[i];
+                    var option = createLanguageOptionTag(lang.id, lang.name);
+                    $("#originLanguageSelectId").append(option);
+                }
+                fillTargetLanguages();
+            }).fail(function () {
+            throw new Error("Error retrieving origin languages")
+        });
+    }
+
+    function fillTargetLanguages() {
+        $("#targetLanguageSelectId").empty();
+        var selectedOriginLangId = $('#originLanguageSelectId').find(":selected").data("lang-id");
+        $.get("/languages/other/" + selectedOriginLangId)
+            .done(function (data) {
+                var response = data;
+                for (var i = 0; i < response.length; i++) {
+                    var lang = response[i];
+                    var option = createLanguageOptionTag(lang.id, lang.name);
+                    $("#targetLanguageSelectId").append(option);
+                }
+                findCombination();
+            }).fail(function () {
+            throw new Error("Error retrieving target languages")
+        });
+    }
+
+    function findCombination() {
+        var selectedOriginLangId = $('#originLanguageSelectId').find(":selected").data("lang-id");
+        var selectedTargetLangId = $('#targetLanguageSelectId').find(":selected").data("lang-id");
+        $("#priceBoxId").empty();
+        $.get("/combinations/" + selectedOriginLangId + "/" + selectedTargetLangId)
+            .done(function (data) {
+                var price = data.pricePerWord;
+                $("#priceBoxId").text(price)
+            }).fail(function () {
+            throw new Error("Error retrieving target languages")
+        });
+    }
+
+    function createLanguageOptionTag(id, message) {
+        return '<option data-lang-id="' + id + '">' + message + '</option>';
+    }
+
+    function uploadFileTrigger() {
+        $("#uploadFileInputId").focus().trigger('click');
+    }
+
+    function triggerOnChangeFileInput() {
+        $("#uploadFileInputId").change(function () {
+            console.log("file detected");
+            if (isExtensionAllowed(['doc', 'docx']) && isFileSizeAllowed(5000000)) {
+                actionOnLoader('show');
+                uploadFileAjax();
+            } else {
+                displayErrorUploadingFile();
+            }
+        });
+    }
+
+    function isFileSizeAllowed(maxSizeInBytes) {
+        var size = $('#uploadFileInputId')[0].files[0].size;
+        if (size <= maxSizeInBytes) {
+            return true;
+        }
+        return false;
+    }
+
+    function isExtensionAllowed(allowedExtensions) {
+        var extension = $('#uploadFileInputId').val().replace(/^.*\./, '');
+        if (allowedExtensions.indexOf(extension) == -1) {
+            return false;
+        }
+        return true;
+    }
+
+    function actionOnLoader(action) {
+        $('#contentToWaitId').LoadingOverlay(action, {
+            background: "rgba(0, 0, 0, 0.2)",
+            imageColor: "white"
+        });
+    }
+
+    function uploadFileAjax() {
+
+        var selectedOriginLangId = $('#originLanguageSelectId').find(":selected").data("lang-id");
+        var selectedTargetLangId = $('#targetLanguageSelectId').find(":selected").data("lang-id");
+
+        var form = $('#fileUploadForm')[0];
+        var data = new FormData(form);
+
+        $.ajax({
+            type: "POST",
+            //enctype: 'multipart/form-data',
+            url: "/files/" + selectedOriginLangId + "/" + selectedTargetLangId,
+            data: data,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (data) {
+                console.log(JSON.stringify(data));
+                displayBudgetResult(data.words, data.estimatedPrice);
+                actionOnLoader('hide');
+            },
+            error: function (e) {
+                displayErrorUploadingFile();
+                actionOnLoader('hide');
+            }
+        });
+    }
+
+    function displayBudgetResult(words, price) {
+        $('#resultFileRowId').removeClass('d-none');
+        $('#wordsCounterId').empty().text(words);
+        $('#priceId').empty().text(price);
+    }
+
+    function displayErrorUploadingFile() {
+        $('#requirementsFileId').addClass('text-danger');
+        $('#uploadFileInputId').val('');
+    }
+</script>
+</body>
+
+</html>
