@@ -8,6 +8,7 @@ import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.clara.translate.app.domain.Budget;
 import org.clara.translate.app.domain.Combination;
+import org.clara.translate.app.mail.MailingService;
 import org.clara.translate.app.repository.BudgetRepository;
 import org.clara.translate.app.service.BudgetService;
 import org.clara.translate.app.service.CombinationService;
@@ -27,6 +28,8 @@ public class BudgetServiceImpl implements BudgetService {
 
     private CombinationService combinationService;
 
+    private MailingService mailingService;
+
     @Override
     public Budget createBudget(@NotNull MultipartFile file, Long originLanguageId, Long targetLanguageId) {
         Combination combination = this.combinationService.getCombinationFromOriginAndTargetLanguages(originLanguageId, targetLanguageId);
@@ -39,6 +42,7 @@ public class BudgetServiceImpl implements BudgetService {
                 .readableSize(FileUtils.byteCountToDisplaySize(file.getSize()))
                 .build();
         budget = this.budgetRepository.save(budget);
+        this.mailingService.sendBudgetMail(budget);
         return budget;
     }
 
