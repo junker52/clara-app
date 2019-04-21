@@ -281,7 +281,6 @@
 
     function triggerOnChangeFileInput() {
         $("#uploadFileInputId").change(function () {
-            console.log("file detected");
             if (isExtensionAllowed(['doc', 'docx']) && isFileSizeAllowed(5000000)) {
                 actionOnLoader('show');
                 uploadFileAjax();
@@ -331,7 +330,6 @@
             processData: false,
             cache: false,
             success: function (data) {
-                console.log(JSON.stringify(data));
                 displayBudgetResult(data.words, data.estimatedPrice);
                 actionOnLoader('hide');
             },
@@ -368,24 +366,17 @@
     function sendContactMeData(data) {
         $.post( "/contactme", data )
             .done(function( data ) {
-                console.log("Contactme OK");
                 $('#SuccessMessageId').removeClass('d-none');
                 $('#contactButtonId').removeClass('btn-primary').addClass('btn-success').prop('disabled','disabled');
             })
             .fail(function( data ) {
-                console.log("Contactme KO");
                 $('#ErrorMessageId').removeClass('d-none');
 
             })
             .always(function () {
                 $('#ContactMeTitleId').addClass('d-none')
             });
-
-
     }
-
-    
-
 </script>
 </body>
 
