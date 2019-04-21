@@ -31,10 +31,10 @@ public class DatabaseBootstrapService implements ApplicationListener<ContextRefr
     }
 
     private void saveLanguagesAndCombinations() {
-        Language spanish = Language.builder().name("spanish").code("ES").translatingCode("msg_lang_es").build();
-        Language french = Language.builder().name("french").code("FR").translatingCode("msg_lang_fr").build();
-        Language english = Language.builder().name("english").code("EN").translatingCode("msg_lang_en").build();
-        Language catalan = Language.builder().name("catalan").code("CA").translatingCode("msg_lang_ca").build();
+        Language spanish = Language.builder().name("spanish").code("ES").translatingCode("lang_es").build();
+        Language french = Language.builder().name("french").code("FR").translatingCode("lang_fr").build();
+        Language english = Language.builder().name("english").code("EN").translatingCode("lang_en").build();
+        Language catalan = Language.builder().name("catalan").code("CA").translatingCode("lang_ca").build();
 
         this.languageRepository.saveAll(Arrays.asList(spanish, french, english, catalan));
 

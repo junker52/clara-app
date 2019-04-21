@@ -22,10 +22,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar11">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="#mission">Mission</a></li>
-                <li class="nav-item"><a class="nav-link" href="#career">Career</a></li>
-                <li class="nav-item"><a class="nav-link" href="#budget">Budget</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contactme">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="#mission" th:text="#{header.mission}">Mission</a></li>
+                <li class="nav-item"><a class="nav-link" href="#career" th:text="#{header.career}">Career</a></li>
+                <li class="nav-item"><a class="nav-link" href="#budget" th:text="#{header.budget}">Budget</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contactme" th:text="#{header.contact}">Contact</a></li>
             </ul>
             <ul class="navbar-nav ">
                 <li class="nav-item"><a class="nav-link" href="#">EN</a></li>
@@ -41,11 +41,11 @@
     <div class="container py-5">
         <div class="row">
             <div class="mx-auto col-lg-8 col-md-10">
-                <h1 class="mb-4 display-4">Translating to understand&nbsp;</h1>
-                <p class="lead mb-5">I translate to bring people, knowledge and cultures closer. I like to communicate
+                <h1 class="mb-4 display-4" th:text="#{cover.title}">Translating to understand&nbsp;</h1>
+                <p class="lead mb-5" th:text="#{cover.subtitle}">I translate to bring people, knowledge and cultures closer. I like to communicate
                     and help people to communicate and understand each other better.</p> <a href="#budget"
                                                                                             class="btn btn-lg mx-1 btn-secondary"><i
-                    class="fa fa-fw mr-2 fa-globe"></i>I need to translate something</a><a
+                    class="fa fa-fw mr-2 fa-globe"></i><span th:text="#{cover.button.translate}">I need to translate something</span></a><a
                     th:href="@{'https://es.linkedin.com/in/clara-barn%C3%A9s-andreu-37119b109'}"
                     class="btn btn-lg btn-info mx-1" target="_blank"><i class="fa fa-linkedin mr-2"></i>LinkedIn</a>
             </div>
@@ -56,12 +56,12 @@
     <div class="container">
         <div class="row">
             <div class="px-lg-5 d-flex flex-column justify-content-center col-lg-6">
-                <h2 contenteditable="true">Translating &amp; Interpreting</h2>
-                <p class="mb-3 text-justify">My name is Clara Barnés and my job is to help people who speak different
+                <h2 contenteditable="true" th:text="#{mission.title}">Translating &amp; Interpreting</h2>
+                <p class="mb-3 text-justify"><span th:text="#{mission.first.part}">My name is Clara Barnés and my job is to help people who speak different
                     languages communicate without problems. I have a degree in Translation and Interpreting from the
-                    UAB.<br>From some years ago I work with <strong>catalan</strong>, <strong>spanish</strong>, <strong>english</strong>
-                    and <strong>french</strong> for public and private clients doing translations of generic and
-                    specialized texts, as well as performing interpretation tasks</p>
+                    UAB.<br>From some years ago I work with </span><strong th:text="#{lang_ca}">catalan</strong>, <strong th:text="#{lang_es}">spanish</strong>, <strong th:text="#{lang_en}">english</strong>
+                    <span th:text="#{mission.second.part}">and</span> <strong th:text="#{lang_fr}">french</strong><span th:text="#{mission.third.part}"> for public and private clients doing translations of generic and
+                    specialized texts, as well as performing interpretation tasks</span></p>
             </div>
             <div class="col-lg-6"><img class="img-fluid d-block" th:src="@{image/clara-picture.jpg}"></div>
         </div>
@@ -71,7 +71,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="text-center mx-auto col-md-12">
-                <h2 class="mb-3">About me: I like to do sports and, above all, travel ...</h2>
+                <h2 class="mb-3" th:text="#{photos.title}">About me: I like to do sports and, above all, travel ...</h2>
             </div>
         </div>
         <div class="row">
@@ -94,21 +94,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center">Some of the partners that I have worked with ...</h1>
+                <h1 class="text-center" th:text="#{career.title}">Some of the partners that I have worked with ...</h1>
                 <div class="row">
                     <div class="col-lg-5 col-md-6 p-md-4 col-12"><a href="http://www.bimsa.cat/" target="_blank"><img
                             class="img-fluid d-block" th:src="@{image/bimsa-logo-300h.jpg}" width="1500"></a></div>
                     <div class="col-md-6 offset-lg-1 d-flex flex-column justify-content-center py-4">
-                        <h4 class="my-3"><b>BIMSA</b></h4>
-                        <p class="text-justify">I have collaborated with BIMSA, doing translations of technical
+                        <h4 class="my-3"><b th:text="#{career.bimsa.title}">BIMSA</b></h4>
+                        <p class="text-justify" th:text="#{career.bimsa.description}">I have collaborated with BIMSA, doing translations of technical
                             documents of the legal field related to public works tenders from Catalan to Spanish for
                             later publication.</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 d-flex flex-column justify-content-center order-2 order-md-1 py-4">
-                        <h4 class="my-3"><b>Mossos d'Esquadra</b></h4>
-                        <p class="text-justify">I have collaborated with the police force of Mossos d'Esquadra, through
+                        <h4 class="my-3"><b th:text="#{career.mossos.title}">Mossos d'Esquadra</b></h4>
+                        <p class="text-justify" th:text="#{career.mossos.description}">I have collaborated with the police force of Mossos d'Esquadra, through
                             an intermediary company, assisting foreigners in the presentation of complaints: acting as
                             interpreter between the agents and these people, as well as translating their testimonies to
                             translate them into official documents .</p>
@@ -122,8 +122,8 @@
                     <div class="col-lg-5 col-md-6 p-md-4 col-12"><a href="https://www.vopi4.com/" target="_blank"><img
                             class="img-fluid d-block" th:src="@{image/vopi-logo-300h.jpg}" width="1500"></a></div>
                     <div class="col-md-6 offset-lg-1 d-flex flex-column justify-content-center py-4">
-                        <h4 class="my-3"><b>Vopi 4 Business Group</b></h4>
-                        <p class="text-justify">I have collaborated extensively with Vopi4 translating the different
+                        <h4 class="my-3"><b th:text="#{career.vopi.title}">Vopi 4 Business Group</b></h4>
+                        <p class="text-justify" th:text="#{career.vopi.description}">I have collaborated extensively with Vopi4 translating the different
                             websites of the companies that make up the group into English and French. Additionally, I
                             have collaborated in the translation into these two languages of technical and legal
                             documents.</p>
@@ -137,36 +137,36 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h1>Do you need to translate a document ? Make numbers...</h1>
+                <h1 th:text="#{budget.title}">Do you need to translate a document ? Make numbers...</h1>
             </div>
         </div>
         <div class="row justify-content-center" id="contentToWaitId">
             <div class="col-md-6 p-4">
-                <h4 class="mb-4">Find the price per word of your translation</h4>
+                <h4 class="mb-4" th:text="#{budget.combination.title}">Find the price per word of your translation</h4>
                 <form class="">
-                    <div class="form-group"><label class="text-left">From</label>
+                    <div class="form-group"><label class="text-left" th:text="#{budget.combination.from}">From</label>
                         <select class="form-control" id="originLanguageSelectId" onchange="fillTargetLanguages()">
                         </select></div>
-                    <div class="form-group"><label>To</label>
+                    <div class="form-group"><label th:text="#{budget.combination.to}">To</label>
                         <select class="form-control" id="targetLanguageSelectId" onchange="findCombination()">
                         </select>
                     </div>
                 </form>
-                <p class="mt-3 text-success" id="resultLangToLangId"><strong id="priceBoxId">10</strong> € / word</p>
+                <p class="mt-3 text-success" id="resultLangToLangId"><strong id="priceBoxId">10</strong> € / <span th:text="#{budget.combination.word}">word</span></p>
             </div>
             <div class="col-md-6 col-6 p-4">
-                <h4>Select the document to be translated to obtain an approximate budget</h4>
-                <div class="form-group"><label id="requirementsFileId">Only .docx or .doc and 5 MB files allowed</label>
+                <h4 th:text="#{budget.file.title}">Select the document to be translated to obtain an approximate budget</h4>
+                <div class="form-group"><label id="requirementsFileId" th:text="#{budget.file.conditions}">Only .docx or .doc and 5 MB files allowed</label>
                 </div>
-                <button type="button" class="btn btn-outline-primary" onclick="uploadFileTrigger()">Upload File</button>
+                <button type="button" class="btn btn-outline-primary" onclick="uploadFileTrigger()" th:text="#{budget.file.button}">Upload File</button>
                 <button type="button" class="btn btn-outline-warning d-none">Reset File</button>
                 <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
                     <input type="file" class="d-none" id="uploadFileInputId" name="file">
                 </form>
-                <small class="form-text text-muted">The file won't be saved in our servers after this operation.</small>
+                <small class="form-text text-muted" th:text="#{budget.file.small}">The file won't be saved in our servers after this operation.</small>
                 <div class="row mt-2 d-none" id="resultFileRowId">
                     <div class="col-md-12">
-                        <p class="text-success">Words found: <strong id="wordsCounterId">1450</strong> - Estimated cost:
+                        <p class="text-success"><span th:text="#{budget.result.first.part}">Words found:</span> <strong id="wordsCounterId">1450</strong> - <span th:text="#{budget.result.second.part}">Estimated cost:</span>
                             <strong id="priceId">123</strong> €</p>
                     </div>
                 </div>
@@ -178,21 +178,21 @@
     <div class="container">
         <div class="row">
             <div class="mx-auto p-4 col-lg-7">
-                <h1 class="mb-4" id="ContactMeTitleId">Contact me!</h1>
+                <h1 class="mb-4" id="ContactMeTitleId" th:text="#{contactme.title}">Contact me!</h1>
                 <h1 class="mb-4 text-success d-none" id="SuccessMessageId"><i
-                        class="fa fa-fw mr-2 fa-thumbs-up"></i>Mail succesfully sent!</h1>
-                <h1 class="mb-4 text-danger d-none" id="ErrorMessageId">Ups! Something was wrong!</h1>
+                        class="fa fa-fw mr-2 fa-thumbs-up"></i><span th:text="#{contactme.title.success}">Mail succesfully sent!</span></h1>
+                <h1 class="mb-4 text-danger d-none" id="ErrorMessageId" th:text="#{contactme.title.error}">Ups! Something was wrong!</h1>
                 <form th:method="POST" th:action="@{/contactme}" id="contactFormId">
                     <div class="form-row">
                         <div class="form-group col-md-12"><input type="text" class="form-control" name="name"
-                                                                 placeholder="Name" required></div>
+                                                                 th:placeholder="#{contactme.placeholder.name}" required></div>
                     </div>
-                    <div class="form-group"><input type="email" class="form-control" name="email" placeholder="Email" required>
+                    <div class="form-group"><input type="email" class="form-control" name="email" th:placeholder="#{contactme.placeholder.email}" required>
                     </div>
                     <div class="form-group"><textarea class="form-control" name="message" rows="3"
-                                                      placeholder="Tell me!" required></textarea></div>
+                                                      th:placeholder="#{contactme.placeholder.text}" required></textarea></div>
                     <button type="submit" class="btn btn-primary" id="contactButtonId"><i
-                            class="fa fa-fw mr-2 fa-send"></i>Send</button>
+                            class="fa fa-fw mr-2 fa-send"></i><span th:text="#{contactme.button}">Send</span></button>
                 </form>
             </div>
         </div>
@@ -202,7 +202,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <p class="mb-0">© Copyright 2019 - CLARA BARNÉS. All rights reserved.&nbsp;</p>
+                <p class="mb-0">© Copyright 2019 - CLARA BARNÉS. <span th:text="#{footer.rights}">All rights reserved.</span>&nbsp;</p>
             </div>
         </div>
     </div>
