@@ -8,6 +8,7 @@ env:
   global:
   - secure: eDxkkx8HImzGdWU7OCGudqm+3t9Zd+Fh/GdvXzOQFv/vB1o06bn8giCLqRUBeBi+0H+WuzRMSnRqHCBXEQ9imA3JSTf7dY0Ai5qvaF1Fl4kkFpQv03HLc37qnHPrUiz30UAoGijO8hUgvgghuczI1jyN89j6DhA/8EaTtDb6mUI/cxE72xKslznLaSVpcUSfzf/FhU0iOLWUtHG1d1S+DClaZcMEEXlZ5rHIYhh8P5wVUXs3kNSsCzBF5FGXxSPL1a3DyRfa6v3Zj1u70vPzl5mij1jKGfeSx3gOOATut2Fjo/MDuE6mSrLPfKCMgXf0Ak1xmYmK+gpXDlyctMQWBRNJxps7xvOVd4hV9n4Rezqa4lZgx1fHBchVC3jhbKVY0ntkcocOlta44tpJCIcA4V4iRn6wDYSLSSLCLI4ePJdb2wX1wAgplEtgsNVB8/riq8ogeGTElNIAvitzLWUDNZ39Km0Ll9Fs0LofEnQdT7pB/f5okGi0RIO2LuGR0YWBV4udh4Pw7WFeKRyqZnzbEgS0B/cuiISUEqwJeVXdACqCQrEfLuDmK7R+UuisQlMRyB5midEO74fusZTfYqsPESlAHKMTIofC6DZ59Dw8ULGLFAczX390+wBj2Mqnb0HYOBCK6CA7s28ibAUa7j6Z1skDWPYIjFY1ZX8mVdgJpSU=
   - secure: DX6jTDWcX0FWLao6uXb61tRKUZdGfUvEZE2JNS9E4RODtde2ovyCrHsQsfJeNIWMqDbD5I9rt7wXVkEaHmtExe+6jNRJUobcalM9bi4CIL6HlLhnorYyjvGQ/NsAtKSqo5MSb6ayk5DoTIst1HytNnxbMQ65HewMT07qmDVg3WUQ51LZ67KQ/WFL3cVQmcOSQ0Mb7dbaqc70iwR1AGKlof5k+R9WfcFEIdJst04wvLuH/4ct8Z5xagnQcXBYtfalc4ZcDqwSUM79c6viOSceHsNkHAXYV9oXAjCXdPMrwVi36FqeW87qDzcVhXwzeAaB1HnoV83KEZIFAFa5mEQtDsrBIpSOlrwTHQS9olsq+gyYuTanMLzMjwBeQw12zzw2ryQR7FEGlex8fFG3wsAkdiZlVdzCZp+9rW+ZNxbVI1sJsqI4DJAPdmVbHclNf7XF0jNUohs8PKDNQX+jCYLrfCUnQR22xCad7uQYK6TWD8E4HTaDpElqjj/k0eaTLx1/XwSTKFvojIhRmes8gxNYaDiMf9ckdZWR3oCmPA7OJqesg/ElSmX7DerH2upzh46+lwTOIvo55i32BWWXaWfmt7pHRaMJYfgPxq0+mmAU3rSrnjiXuIhKOt//KnaIuWAAfi+I7UnrDdjHrX5H2HZHUTtj7GZzA6aK30Xjl3VBe7U=
+  - COMMIT=${TRAVIS_COMMIT::7}
 branches:
   only:
   - master
@@ -17,6 +18,7 @@ after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
 - export IMAGE_NAME=junker52/clara-app
-- docker build -t $IMAGE_NAME .
-- docker tag $IMAGE_NAME $IMAGE_NAME:$TAG
+- docker build -t $IMAGE_NAME:$COMMIT .
+- docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
 - docker push $IMAGE_NAME
+- echo "PUSH OK!"
