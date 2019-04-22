@@ -12,6 +12,7 @@ env:
 branches:
   only:
   - master
+
 script: mvn clean package -Dspring.profiles.active=prod
 
 after_success:
