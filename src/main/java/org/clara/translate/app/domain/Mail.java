@@ -31,4 +31,9 @@ public class Mail {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    @PrePersist
+    private void prePersist() {
+        this.createdAt = new Date();
+    }
 }

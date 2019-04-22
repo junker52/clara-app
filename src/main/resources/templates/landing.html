@@ -8,7 +8,7 @@
           th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'}"
           type="text/css">
     <link rel="stylesheet" th:href="@{css/colorful.css}">
-    <title>Clara Barnés - Translations</title>
+    <title th:text="#{site.title}">Clara Barnés - Translations</title>
 </head>
 
 <body>
@@ -27,11 +27,15 @@
                 <li class="nav-item"><a class="nav-link" href="#budget" th:text="#{header.budget}">Budget</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contactme" th:text="#{header.contact}">Contact</a></li>
             </ul>
-            <ul class="navbar-nav ">
-                <li class="nav-item"><a class="nav-link" href="#">EN</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">FR</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">ES</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">CA</a></li>
+            <ul class="navbar-nav d-none d-md-inline-flex">
+                <li class="nav-item" th:classappend='${#strings.equalsIgnoreCase(#locale, "en") ? "active" : ""}'><a
+                        class="nav-link" onclick="changeLocale('en')">EN</a></li>
+                <li class="nav-item" th:classappend='${#strings.equalsIgnoreCase(#locale, "fr") ? "active" : ""}'><a
+                        class="nav-link" onclick="changeLocale('fr')">FR</a></li>
+                <li class="nav-item" th:classappend='${#strings.equalsIgnoreCase(#locale, "es") ? "active" : ""}'><a
+                        class="nav-link" onclick="changeLocale('es')">ES</a></li>
+                <li class="nav-item" th:classappend='${#strings.equalsIgnoreCase(#locale, "ca") ? "active" : ""}'><a
+                        class="nav-link" onclick="changeLocale('ca')">CA</a></li>
             </ul>
         </div>
     </div>
@@ -42,12 +46,13 @@
         <div class="row">
             <div class="mx-auto col-lg-8 col-md-10">
                 <h1 class="mb-4 display-4" th:text="#{cover.title}">Translating to understand&nbsp;</h1>
-                <p class="lead mb-5" th:text="#{cover.subtitle}">I translate to bring people, knowledge and cultures closer. I like to communicate
-                    and help people to communicate and understand each other better.</p> <a href="#budget"
-                                                                                            class="btn btn-lg mx-1 btn-secondary"><i
-                    class="fa fa-fw mr-2 fa-globe"></i><span th:text="#{cover.button.translate}">I need to translate something</span></a><a
-                    th:href="@{'https://es.linkedin.com/in/clara-barn%C3%A9s-andreu-37119b109'}"
-                    class="btn btn-lg btn-info mx-1" target="_blank"><i class="fa fa-linkedin mr-2"></i>LinkedIn</a>
+                <p class="lead mb-4" th:text="#{cover.subtitle}">I translate to bring people, knowledge and cultures
+                    closer. I like to communicate
+                    and help people to communicate and understand each other better.</p>
+                <a href="#budget" class="btn btn-lg mx-1 btn-secondary mt-2"><i class="fa fa-fw mr-2 fa-globe"></i><span
+                        th:text="#{cover.button.translate}">I need to translate something</span></a>
+                <a th:href="@{'https://es.linkedin.com/in/clara-barn%C3%A9s-andreu-37119b109'}"
+                   class="btn btn-lg btn-info mx-1 mt-2" target="_blank"><i class="fa fa-linkedin mr-2"></i>LinkedIn</a>
             </div>
         </div>
     </div>
@@ -218,166 +223,8 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script th:src="@{'https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js'}"></script>
-<script>
-    $(document).ready(function () {
-        fillOriginLanguages();
-        triggerOnChangeFileInput();
-        onSubmitMessage();
-    });
-
-    function fillOriginLanguages() {
-        $("#originLanguageSelectId").empty();
-        $.get("/languages")
-            .done(function (data) {
-                var response = data;
-                for (var i = 0; i < response.length; i++) {
-                    var lang = response[i];
-                    var option = createLanguageOptionTag(lang.id, lang.name);
-                    $("#originLanguageSelectId").append(option);
-                }
-                fillTargetLanguages();
-            }).fail(function () {
-            throw new Error("Error retrieving origin languages")
-        });
-    }
-
-    function fillTargetLanguages() {
-        $("#targetLanguageSelectId").empty();
-        var selectedOriginLangId = $('#originLanguageSelectId').find(":selected").data("lang-id");
-        $.get("/languages/other/" + selectedOriginLangId)
-            .done(function (data) {
-                var response = data;
-                for (var i = 0; i < response.length; i++) {
-                    var lang = response[i];
-                    var option = createLanguageOptionTag(lang.id, lang.name);
-                    $("#targetLanguageSelectId").append(option);
-                }
-                findCombination();
-            }).fail(function () {
-            throw new Error("Error retrieving target languages")
-        });
-    }
-
-    function findCombination() {
-        var selectedOriginLangId = $('#originLanguageSelectId').find(":selected").data("lang-id");
-        var selectedTargetLangId = $('#targetLanguageSelectId').find(":selected").data("lang-id");
-        $("#priceBoxId").empty();
-        $.get("/combinations/" + selectedOriginLangId + "/" + selectedTargetLangId)
-            .done(function (data) {
-                var price = data.pricePerWord;
-                $("#priceBoxId").text(price)
-            }).fail(function () {
-            throw new Error("Error retrieving target languages")
-        });
-    }
-
-    function createLanguageOptionTag(id, message) {
-        return '<option data-lang-id="' + id + '">' + message + '</option>';
-    }
-
-    function uploadFileTrigger() {
-        $("#uploadFileInputId").focus().trigger('click');
-    }
-
-    function triggerOnChangeFileInput() {
-        $("#uploadFileInputId").change(function () {
-            if (isExtensionAllowed(['doc', 'docx']) && isFileSizeAllowed(5000000)) {
-                actionOnLoader('show');
-                uploadFileAjax();
-            } else {
-                displayErrorUploadingFile();
-            }
-        });
-    }
-
-    function isFileSizeAllowed(maxSizeInBytes) {
-        var size = $('#uploadFileInputId')[0].files[0].size;
-        if (size <= maxSizeInBytes) {
-            return true;
-        }
-        return false;
-    }
-
-    function isExtensionAllowed(allowedExtensions) {
-        var extension = $('#uploadFileInputId').val().replace(/^.*\./, '');
-        if (allowedExtensions.indexOf(extension) == -1) {
-            return false;
-        }
-        return true;
-    }
-
-    function actionOnLoader(action) {
-        $('#contentToWaitId').LoadingOverlay(action, {
-            background: "rgba(0, 0, 0, 0.2)",
-            imageColor: "white"
-        });
-    }
-
-    function uploadFileAjax() {
-
-        var selectedOriginLangId = $('#originLanguageSelectId').find(":selected").data("lang-id");
-        var selectedTargetLangId = $('#targetLanguageSelectId').find(":selected").data("lang-id");
-
-        var form = $('#fileUploadForm')[0];
-        var data = new FormData(form);
-
-        $.ajax({
-            type: "POST",
-            //enctype: 'multipart/form-data',
-            url: "/files/" + selectedOriginLangId + "/" + selectedTargetLangId,
-            data: data,
-            contentType: false,
-            processData: false,
-            cache: false,
-            success: function (data) {
-                displayBudgetResult(data.words, data.estimatedPrice);
-                actionOnLoader('hide');
-            },
-            error: function (e) {
-                displayErrorUploadingFile();
-                actionOnLoader('hide');
-            }
-        });
-    }
-
-    function displayBudgetResult(words, price) {
-        $('#resultFileRowId').removeClass('d-none');
-        $('#wordsCounterId').empty().text(words);
-        $('#priceId').empty().text(price);
-    }
-
-    function displayErrorUploadingFile() {
-        $('#requirementsFileId').addClass('text-danger');
-        $('#uploadFileInputId').val('');
-    }
-
-    function onSubmitMessage() {
-        $( "#contactFormId" ).submit(function( event ) {
-            event.preventDefault();
-            var data = {
-                name: $( "#contactFormId" ).find('[name="name"]').val(),
-                email: $( "#contactFormId" ).find('[name="email"]').val(),
-                message: $( "#contactFormId" ).find('[name="message"]').val()
-            }
-            sendContactMeData(data);
-        });
-    }
-    
-    function sendContactMeData(data) {
-        $.post( "/contactme", data )
-            .done(function( data ) {
-                $('#SuccessMessageId').removeClass('d-none');
-                $('#contactButtonId').removeClass('btn-primary').addClass('btn-success').prop('disabled','disabled');
-            })
-            .fail(function( data ) {
-                $('#ErrorMessageId').removeClass('d-none');
-
-            })
-            .always(function () {
-                $('#ContactMeTitleId').addClass('d-none')
-            });
-    }
-</script>
+<script th:src="@{js/landing.js}"></script>
+<script th:src="@{js/jquery-smooth-scroll.js}"></script>
 </body>
 
 </html>
