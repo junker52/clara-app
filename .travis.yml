@@ -7,4 +7,4 @@ notifications:
   email:
     recipients:
     - r.molina91@gmail.com
-script: ./mvnw clean package Dspring.profiles.active=prod
+script: mvn clean package -Dspring.profiles.active=prod
