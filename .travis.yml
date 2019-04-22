@@ -1,0 +1,10 @@
+language: java
+jdk: oraclejdk8
+branches:
+  only:
+  - master
+notifications:
+  email:
+    recipients:
+    - r.molina91@gmail.com
+script: ./mvnw clean package Dspring.profiles.active=prod
