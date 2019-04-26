@@ -51,7 +51,7 @@ function findCombination() {
 }
 
 function createLanguageOptionTag(id, message) {
-    return '<option data-lang-id="' + id + '">' + message + '</option>';
+    return '<option class="text-capitalize" data-lang-id="' + id + '">' + message + '</option>';
 }
 
 function uploadFileTrigger() {

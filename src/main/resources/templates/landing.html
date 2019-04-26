@@ -150,10 +150,12 @@
                 <h4 class="mb-4" th:text="#{budget.combination.title}">Find the price per word of your translation</h4>
                 <form class="">
                     <div class="form-group"><label class="text-left" th:text="#{budget.combination.from}">From</label>
-                        <select class="form-control" id="originLanguageSelectId" onchange="fillTargetLanguages()">
+                        <select class="form-control text-capitalize" id="originLanguageSelectId"
+                                onchange="fillTargetLanguages()">
                         </select></div>
                     <div class="form-group"><label th:text="#{budget.combination.to}">To</label>
-                        <select class="form-control" id="targetLanguageSelectId" onchange="findCombination()">
+                        <select class="form-control text-capitalize" id="targetLanguageSelectId"
+                                onchange="findCombination()">
                         </select>
                     </div>
                 </form>

@@ -16,6 +16,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
@@ -41,14 +42,14 @@ public class LanguageControllerTest {
         Language lang2 = Language.builder().id(2L).code("FR").build();
         List<Language> langs = Arrays.asList(lang1, lang2);
 
-        given(this.languageService.getAllLanguages()).willReturn(langs);
+        given(this.languageService.getAllLanguages(any())).willReturn(langs);
 
         this.mvc.perform(get("/languages"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)));
 
         //Verifying the method is accessed
-        verify(this.languageService, times(1)).getAllLanguages();
+        verify(this.languageService, times(1)).getAllLanguages(any());
     }
 
     @Test
@@ -56,14 +57,14 @@ public class LanguageControllerTest {
 
         List<Language> langs = Collections.EMPTY_LIST;
 
-        given(this.languageService.getAllLanguages()).willReturn(langs);
+        given(this.languageService.getAllLanguages(any())).willReturn(langs);
 
         this.mvc.perform(get("/languages"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(0)));
 
         //Verifying the method is accessed
-        verify(this.languageService, times(1)).getAllLanguages();
+        verify(this.languageService, times(1)).getAllLanguages(any());
     }
 
     @Test
@@ -73,15 +74,15 @@ public class LanguageControllerTest {
         Language lang2 = Language.builder().id(2L).code("FR").build();
         List<Language> languages = Arrays.asList(lang1, lang2);
 
-        given(this.languageService.getAllOtherLanguages(anyLong())).willReturn(languages);
+        given(this.languageService.getAllOtherLanguages(anyLong(), any())).willReturn(languages);
 
-        this.mvc.perform(get("/languages/other/{id}", anyLong()))
+        this.mvc.perform(get("/languages/other/{id}", 1L))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].code", is(lang1.getCode())));
 
         //Verifying the method is accessed
-        verify(this.languageService, times(1)).getAllOtherLanguages(anyLong());
+        verify(this.languageService, times(1)).getAllOtherLanguages(anyLong(), any());
 
     }
 
@@ -92,7 +93,7 @@ public class LanguageControllerTest {
         Language lang2 = Language.builder().id(2L).code("FR").build();
         List<Language> languages = Arrays.asList(lang1, lang2);
 
-        given(this.languageService.getAllOtherLanguages(anyLong())).willReturn(languages);
+        given(this.languageService.getAllOtherLanguages(anyLong(), any())).willReturn(languages);
 
         this.mvc.perform(get("/languages/other/{id}", null));
     }
