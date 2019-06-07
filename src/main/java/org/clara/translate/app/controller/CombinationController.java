@@ -26,5 +26,4 @@ public class CombinationController {
     public Combination updateCombinationPrice(@PathVariable Long originLanguageId, @PathVariable Long targetLanguageId, @RequestParam Double price) {
     	return this.combinationService.updateCombinationPrice(originLanguageId, targetLanguageId, price);
     }
-
 }
