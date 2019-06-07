@@ -7,6 +7,7 @@ import org.clara.translate.app.repository.CombinationRepository;
 import org.clara.translate.app.service.CombinationService;
 import org.clara.translate.app.service.LanguageService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -32,5 +33,13 @@ public class CombinationServiceImpl implements CombinationService {
         Language targetLanguage = this.languageService.findLanguageById(targetLanguageId);
         return this.combinationRepository.findByOriginLanguageAndTargetLanguage(originLanguage, targetLanguage).orElseThrow(() -> new RuntimeException("Combination not found"));
     }
+
+	@Override
+	@Transactional
+	public Combination updateCombinationPrice(Long originLanguageId, Long targetLanguageId, Double price) {
+		Combination combination = this.getCombinationFromOriginAndTargetLanguages(originLanguageId, targetLanguageId);
+		combination.setPricePerWord(new BigDecimal(price));
+		return this.combinationRepository.save(combination);
+	}
 
 }

@@ -1,78 +1,153 @@
-<!DOCTYPE html >
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ca">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="_csrf" content="${_csrf.token}"/>
-	<meta name="_csrf_header" content="${_csrf.headerName}"/>
-    <link rel="icon" type="image/png" th:href="@{favicon.ico}">
-    <meta name="theme-color" content="black">
-    <link rel="stylesheet"
-          th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'}"
-          type="text/css">
-    <link rel="stylesheet" th:href="@{css/colorful.css}">
-    <title th:text="BackOffice">Clara Barnés - Translations</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
+<link rel="icon" type="image/png" th:href="@{favicon.ico}">
+<meta name="theme-color" content="black">
+<link rel="stylesheet"
+	th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{css/colorful.css}">
+<title th:text="BackOffice">Clara Barnés - Translations</title>
 </head>
-<body draggable="true" >
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar12">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar12"> <a class="navbar-brand d-none d-md-block" href="#">
-          <i class="fa d-inline fa-lg fa-laptop mr-2"></i>
-          <b>BACKOFFICE</b>
-        </a>
-        <ul class="navbar-nav mx-auto">
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item"> <a class="nav-link text-light" th:href="@{/logout}">Sortir</a> </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 offset-md-3 col-sm-12 text-center">
-          <form id="c_form-h" class="">
-            <h4 class="text-center mb-4">Actualitzar Preu per Persona:</h4>
-            <div class="form-group row"> <label for="inputmailh" class="col-4 col-form-label">L. Origen</label>
-              <div class="col-8">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row"> <label for="inputmailh" class="col-4 col-form-label">L. Destí</label>
-              <div class="col-8">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row"> <label for="inputmailh" class="col-4 col-form-label">Preu Per Paraula</label>
-              <div class="col-8">
-                <input type="" class="form-control" placeholder="P. ex. 5.23">
-              </div>
-            </div>
-            <button type="submit" class="btn btn-outline-secondary text-center disabled"><i class="fa mr-2 fa-check" aria-hidden="true"></i>Guardar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<body draggable="true">
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<div class="container">
+			<button class="navbar-toggler navbar-toggler-right border-0"
+				type="button" data-toggle="collapse" data-target="#navbar12">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbar12">
+				<a class="navbar-brand d-none d-md-block" href="#"> <i
+					class="fa d-inline fa-lg fa-laptop mr-2"></i> <b>BACKOFFICE</b>
+				</a>
+				<ul class="navbar-nav mx-auto">
+				</ul>
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link text-light"
+						th:href="@{/logout}">Sortir</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3 col-sm-12 text-center">
+					<form id="priceForm" class="">
+						<h4 class="text-center mb-4">Actualitzar Preu per Persona:</h4>
+						<div class="form-group row">
+							<label for="inputmailh" class="col-4 col-form-label">L.
+								Origen</label>
+							<div class="col-8">
+								<select class="form-control text-capitalize"
+									id="originLanguageSelectId" onchange="fillTargetLanguages()">
+									<option>1</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputmailh" class="col-4 col-form-label">L.
+								Destí</label>
+							<div class="col-8">
+								<select class="form-control text-capitalize"
+									id="targetLanguageSelectId">
+									<option>1</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputmailh" class="col-4 col-form-label">Preu
+								Per Paraula</label>
+							<div class="col-8">
+								<input type="number" class="form-control"
+									id="combinationPriceInput" placeholder="P. ex. 5.23"
+									required="required" onkeyup="activateSubmitCombinationPrice()">
+							</div>
+						</div>
+						<button type="submit"
+							class="btn btn-outline-secondary text-center disabled mt-2"
+							id="saveNewPriceButton">
+							<i class="fa mr-2 fa-check" aria-hidden="true"></i>Guardar
+						</button>
+						<a class="btn btn-outline-info ml-2 mt-2" role="button" th:href="@{/}"><i class="fa fa-home mr-2" aria-hidden="true"></i> Tornar a la web</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{'https://code.jquery.com/jquery-3.4.0.min.js'}"
+		integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+		crossorigin="anonymous"></script>
+	<script
+		th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js'}"
+		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		crossorigin="anonymous"></script>
+	<script
+		th:src="@{'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'}"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script
+		th:src="@{'https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js'}"></script>
+	<script th:src="@{js/landing.js}"></script>
+	<script type="text/javascript">
+		$(document).ready(
+				function() {
+					fillOriginLanguages();
+
+					$("#priceForm").submit(
+							function(event) {
+								event.preventDefault();
+								var selectedOriginLangId = $(
+										'#originLanguageSelectId').find(
+										":selected").data("lang-id");
+								var selectedTargetLangId = $(
+										'#targetLanguageSelectId').find(
+										":selected").data("lang-id");
+								var data = {
+									price : $("#priceForm").find(
+											'[id="combinationPriceInput"]')
+											.val(),
+								};
+								sendCombinationNewPrice(data);
+							})
+				});
+
+		function sendCombinationNewPrice(data) {
+			var selectedOriginLangId = $('#originLanguageSelectId').find(
+					":selected").data("lang-id");
+			var selectedTargetLangId = $('#targetLanguageSelectId').find(
+					":selected").data("lang-id");
+			var request = $.ajax({
+				  url: "/combinations/"+selectedOriginLangId+"/"+selectedTargetLangId,
+				  method: "PUT",
+				  data: data,
+				  dataType: "json"
+				});
+				 
+			request.done(function( msg ) {
+			 	console.log('done success');
+			});
+			 
+			request.fail(function( jqXHR, textStatus ) {
+				console.log('fAIL');
+			});
+			
+		}
+
+		function activateSubmitCombinationPrice() {
+			var newPrice = $("#combinationPriceInput").val();
+			if (newPrice) {
+				$("#saveNewPriceButton").removeClass("disabled")
+			} else {
+				$("#saveNewPriceButton").addClass("disabled")
+			}
+		}
+	</script>
 </body>
 
 </html>

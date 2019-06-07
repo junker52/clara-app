@@ -9,4 +9,6 @@ public interface CombinationService {
     void createNewCombination(Language origin, Language to, BigDecimal pricePerWord);
 
     Combination getCombinationFromOriginAndTargetLanguages(Long originLanguageId, Long targetLanguageId);
+
+	Combination updateCombinationPrice(Long originLanguageId, Long targetLanguageId, Double price);
 }

@@ -1,8 +1,3 @@
-$(document).ready(function () {
-    fillOriginLanguages();
-    triggerOnChangeFileInput();
-    onSubmitMessage();
-});
 
 function fillOriginLanguages() {
     $("#originLanguageSelectId").empty();

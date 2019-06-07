@@ -3,6 +3,8 @@ package org.clara.translate.app.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 
 @Entity
@@ -26,5 +28,6 @@ public class Combination {
     @JoinColumn(name = "target_language_id")
     private Language targetLanguage;
 
+    @NotNull
     private BigDecimal pricePerWord;
 }
