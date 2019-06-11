@@ -10,12 +10,17 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
-import lombok.extern.slf4j.Slf4j;
+import lombok.Setter;
 
 @Configuration
 @EnableWebSecurity
+@Setter
+@ConfigurationProperties(prefix = "backoffice")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+	
+	private String user;
+	
+	private String password;
 
 	private static final String LOGIN_URL = "/login";
 
@@ -31,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Bean
 	@Override
 	public UserDetailsService userDetailsService() {
-		UserDetails user = User.withDefaultPasswordEncoder().username("clara").password("pass123").roles("USER")
+		UserDetails user = User.withDefaultPasswordEncoder().username(this.user).password(this.password).roles("USER")
 				.build();
 		return new InMemoryUserDetailsManager(user);
 	}
