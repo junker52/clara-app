@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -40,6 +41,11 @@ public class CombinationServiceImpl implements CombinationService {
 		Combination combination = this.getCombinationFromOriginAndTargetLanguages(originLanguageId, targetLanguageId);
 		combination.setPricePerWord(new BigDecimal(price));
 		return this.combinationRepository.save(combination);
+	}
+
+	@Override
+	public List<Combination> getAllCombinations() {
+		return this.combinationRepository.findAll();
 	}
 
 }

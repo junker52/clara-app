@@ -37,11 +37,17 @@
 	<div class="py-5">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 offset-md-3 col-sm-12 text-center">
-					<form id="priceForm" class="">
+				<div class="col-md-12 text-center">
+					<form id="priceForm" class="mt-1">
 						<h4 class="text-center mb-4">Actualitzar Preu per Persona:</h4>
-						<div class="alert alert-success my-2 d-none" role="alert"><i class="fa fa-check mr-2" aria-hidden="true"></i>El nou preu s'ha guardat bé.</div>
-						<div class="alert alert-danger my-2 d-none" role="alert"><i class="fa fa-times mr-2" aria-hidden="true"></i>El nou preu no s'ha pogut guardar correctement</div>
+						<div class="alert alert-success my-2 d-none" role="alert">
+							<i class="fa fa-check mr-2" aria-hidden="true"></i>El nou preu
+							s'ha guardat bé.
+						</div>
+						<div class="alert alert-danger my-2 d-none" role="alert">
+							<i class="fa fa-times mr-2" aria-hidden="true"></i>El nou preu no
+							s'ha pogut guardar correctement
+						</div>
 						<div class="form-group row">
 							<label for="inputmailh" class="col-4 col-form-label">L.
 								Origen</label>
@@ -77,10 +83,29 @@
 							id="saveNewPriceButton">
 							<i class="fa mr-2 fa-check" aria-hidden="true"></i>Guardar
 						</button>
-						<a class="btn btn-outline-info ml-2 mt-2" role="button"
+					</form>
+				</div>
+				<div class="col-12 text-center">
+					<h4 class="text-center mb-3 mt-5">Combinacions de idiomes i preus</h4>
+					<table class="table table-hover">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col" title="Llengua d'Origen">L. Origen</th>
+								<th scope="col" title="Llengua de destí">L. Destí</th>
+								<th scope="col" title="Preu per paraula">PPP</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="combination: ${combinations}" th:data-combination-id="${combination.id}">
+								<td class="text-capitalize" th:text="#{${combination.originLanguage.translatingCode}}"></td>
+								<td class="text-capitalize" th:text="#{${combination.targetLanguage.translatingCode}}"></td>
+								<td class="text-capitalize price-box" th:text="${#numbers.formatDecimal(combination.pricePerWord, 1, 'COMMA', 2, 'POINT')}+' '+€"></td>
+							</tr>
+						</tbody>
+					</table>
+					<a class="btn btn-outline-info mt-3" role="button"
 							th:href="@{/}"><i class="fa fa-home mr-2" aria-hidden="true"></i>
 							Tornar a la web</a>
-					</form>
 				</div>
 			</div>
 		</div>
@@ -135,9 +160,10 @@
 				dataType : "json"
 			});
 
-			request.done(function(msg) {
+			request.done(function(data) {
 				$(".alert-success").removeClass("d-none");
 				$(".alert-danger").addClass("d-none");
+				syncTablePrices(data);
 			});
 
 			request.fail(function(jqXHR, textStatus) {
@@ -145,6 +171,10 @@
 				$(".alert-danger").removeClass("d-none");
 			});
 
+		}
+		
+		function syncTablePrices(combination) {
+			$("[data-combination-id="+combination.id+"]").find(".price-box").text(combination.pricePerWord+" €");
 		}
 
 		function activateSubmitCombinationPrice() {
